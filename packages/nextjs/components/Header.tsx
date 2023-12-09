@@ -37,8 +37,8 @@ export const HeaderMenuLinks = () => {
               href={href}
               passHref
               className={`${
-                isActive ? "bg-purple-900 shadow-md text-white" : ""
-              } hover:bg-purple-500 hover:shadow-md hover:text-white focus:!bg-purple-900 active:!text-white py-1.5 px-3 text-sm rounded-full gap-2 grid grid-flow-col`}
+                isActive ? "bg-purple-900 shadow-md text-white text-lg" : ""
+              } hover:bg-purple-500 hover:shadow-md hover:text-white text-lg focus:!bg-purple-900 active:!text-white py-1.5 px-3 rounded-full gap-2 grid grid-flow-col`}
             >
               {icon}
               <span>{label}</span>
@@ -92,7 +92,7 @@ export const Header = () => {
             <Image alt="SE2 logo" className="cursor-pointer" fill src="/DeSets Logo.svg" />
           </div>
           <div className="flex flex-col">
-            <span className="font-bold leading-tight text-white">DeSets</span>
+            <span className="font-bold text-2xl leading-tight text-white">DeSets</span>
           </div>
         </Link>
         <ul className="hidden lg:flex lg:flex-nowrap lg:pl-52 text-white font-bold text-lg menu menu-horizontal px-1 gap-2">
