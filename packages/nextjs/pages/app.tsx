@@ -12,7 +12,13 @@ const App = () => {
       <div className="flex justify-between">
         <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
         <button
-          onClick={() => document.getElementById("create_dataset_modal").showModal()}
+          onClick={() =>
+            //@ts-nocheck
+            {
+              const createDatasetModal = document.getElementById("create_dataset_modal") as HTMLDialogElement;
+              createDatasetModal.showModal();
+            }
+          }
           className="btn btn-active btn-primary rounded-lg mr-20 mt-8 font-semibold text-white hover:scale-105 "
         >
           + Create DataSet
