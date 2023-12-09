@@ -28,11 +28,11 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <div className="flex flex-col min-h-screen">
-        <Header />
+        {/* <Header /> */}
         <main className="relative flex flex-col flex-1">
           <Component {...pageProps} />
         </main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
       <Toaster />
     </>
@@ -50,11 +50,7 @@ const ScaffoldEthAppWithProviders = (props: AppProps) => {
   return (
     <WagmiConfig config={wagmiConfig}>
       <NextNProgress />
-      <RainbowKitProvider
-        chains={appChains.chains}
-        avatar={BlockieAvatar}
-        theme={isDarkTheme ? darkTheme() : lightTheme()}
-      >
+      <RainbowKitProvider chains={appChains.chains} avatar={BlockieAvatar} theme={lightTheme()}>
         <ScaffoldEthApp {...props} />
       </RainbowKitProvider>
     </WagmiConfig>
