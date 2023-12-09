@@ -37,12 +37,12 @@ const Intro = () => {
   return (
     <>
       <Navbar />
-      <div className="flex flex-col gap-10 items-center p-28">
+      <div className="flex flex-col gap-10 items-center p-20">
         <h1 className="text-6xl text-white font-bold">DeSets Protocol</h1>
         <div className=" text-white text-3xl">Build the future of AI with Decentralised Datasets.</div>
         <div>
           <button
-            className="btn btn-sm bg-purple-900 rounded-full text-white hover:bg-purple-700"
+            className="btn btn-lg bg-purple-900 rounded-2xl text-white hover:bg-purple-700"
             onClick={handleEnterApp}
           >
             Enter App

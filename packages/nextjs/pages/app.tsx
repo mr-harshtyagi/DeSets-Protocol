@@ -10,7 +10,7 @@ const App = () => {
       <Header />
       {/* My DataSets Heading */}
       <div className="flex justify-between">
-        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
+        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Created DataSets</h2>
         <button
           onClick={() =>
             //@ts-nocheck
@@ -43,6 +43,31 @@ const App = () => {
           creatorWallet="0xhhhh"
           buttonText="Download"
         />
+        <DataSetCard
+          dataSetName="Test"
+          dataSetDescription="Test Description"
+          dataSetNftBuyCounter={13}
+          dataSetNftPrice={100}
+          creatorWallet="0xhhhh"
+          buttonText="Download"
+        />
+        <DataSetCard
+          dataSetName="Test"
+          dataSetDescription="Test Description"
+          dataSetNftBuyCounter={13}
+          dataSetNftPrice={100}
+          creatorWallet="0xhhhh"
+          buttonText="Download"
+        />
+      </div>
+      <Footer />
+
+      <div className="flex justify-between">
+        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
+      </div>
+      <CreateDataSet />
+
+      <div className=" text-white p-10 grid grid-cols-3 w-full">
         <DataSetCard
           dataSetName="Test"
           dataSetDescription="Test Description"
