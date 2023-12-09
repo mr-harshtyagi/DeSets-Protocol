@@ -80,6 +80,8 @@ contract DataSet is ERC721, Ownable {
 	}
 
 	function withdraw() external onlyOwner {
+		require(address(this).balance > 0, "balance is 0");
+		require(msg.sender == owner(), "only owner can withdraw");
 		payable(msg.sender).transfer(address(this).balance);
 	}
 }
