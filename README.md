@@ -2,6 +2,14 @@
 
 ## Introduction
 
+## Stack Used
+
+- Scaffold-eth2 Starter template
+- Hardhat & Solidity
+- Wagmi & viem
+- Typescript & Next.js 13
+- Tailwind CSS & daisyUI
+
 ## Setup and Usage
 
 ## EVM chains (Deployed Contracts)
