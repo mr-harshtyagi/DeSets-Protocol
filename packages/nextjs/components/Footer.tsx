@@ -29,7 +29,7 @@ export const Footer = () => {
             )}
             {isLocalNetwork && (
               <>
-                <Faucet />
+                {/* <Faucet /> */}
                 <Link
                   href="/blockexplorer"
                   passHref
