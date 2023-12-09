@@ -8,7 +8,11 @@ const Marketplace = () => {
     <div>
       <Header />
       {/* My DataSets Heading */}
-      <h2 className="text-4xl text-white font-bold ml-10 mt-8">Explore All DataSets</h2>
+      <div className="flex justify-between">
+        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Explore All DataSets</h2>
+        {/* Search Bar here */}
+      </div>
+
       <div className=" text-white p-10 grid grid-cols-3 w-full">
         <DataSetCard
           dataSetName="Test"
