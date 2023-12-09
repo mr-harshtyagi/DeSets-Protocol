@@ -25,4 +25,14 @@ contract DeSetsFactory is Ownable {
 		emit DataSetCreated(address(datasetNFT), msg.sender);
 		return address(datasetNFT);
 	}
+
+	function getDataSetNFTs() external view returns (address[] memory) {
+		return datasetsNFTs;
+	}
+
+	function getDataSetNFTsByOwner(
+		address owner
+	) external view returns (address[] memory) {
+		return nftOwners[owner];
+	}
 }
