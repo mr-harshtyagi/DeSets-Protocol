@@ -1,11 +1,5 @@
 import React from "react";
-
-interface CreateDataSetProps {
-  dataSetName: string;
-  dataSetDescription: string;
-  price: number;
-  file: File;
-}
+import lighthouse from "@lighthouse-web3/sdk";
 
 const CreateDataSet = () => {
   const [formData, setFormData] = React.useState({
@@ -15,6 +9,28 @@ const CreateDataSet = () => {
     file: "",
   });
 
+  // const handleFileReader = () => {
+  //   // make a promise that resolves when the file is read
+  //   const reader = new FileReader();
+  //   reader.readAsDataURL(formData.file as any);
+  //   return new Promise((resolve, reject) => {
+  //     reader.onload = e => {
+  //       resolve(e.target?.result || null);
+  //     };
+  //     reader.onerror = reject;
+  //   });
+
+  //   // reader.onload = e => {
+  //   //   setFormData(
+  //   //     prev =>
+  //   //       ({
+  //   //         ...prev,
+  //   //         file: e.target?.result || null,
+  //   //       } as any),
+  //   //   );
+  //   // };
+  // };
+
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData(prev => ({
@@ -23,10 +39,39 @@ const CreateDataSet = () => {
     }));
   }
 
+  function handleInputZipChange(event: React.ChangeEvent<HTMLInputElement>) {
+    if (!event.target.files) return;
+    const file = event.target.files[0];
+    setFormData(
+      prev =>
+        ({
+          ...prev,
+          file: file,
+        } as any),
+    );
+  }
+
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log("Form submitted!");
-    console.log(formData);
+    console.log("Form entered!");
+    // console.log(process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY);
+    const API_KEY = process.env.NEXT_PUBLIC_LIGHTHOUSE_API_KEY?.toString() || "";
+
+    // const fileData = await handleFileReader();
+    // console.log(fileData);
+
+    console.log(formData.file, API_KEY);
+
+    const uploadResponse = await lighthouse.upload(formData.file, API_KEY);
+    console.log(uploadResponse);
+    console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + uploadResponse.data.Hash);
+
+    setFormData({
+      dataSetName: "",
+      dataSetDescription: "",
+      price: 0,
+      file: "",
+    });
   }
 
   return (
@@ -88,8 +133,7 @@ const CreateDataSet = () => {
               </div>
               <input
                 name="file"
-                value={formData.file}
-                onChange={handleChange}
+                onChange={handleInputZipChange}
                 type="file"
                 accept=".zip"
                 className="file-input file-input-bordered w-full"
