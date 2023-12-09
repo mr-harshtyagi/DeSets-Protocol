@@ -26,6 +26,12 @@ DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 ```
 
+### Base Testnet
+
+```
+DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+```
+
 ### Scroll Sepolia Testnet
 
 ```
@@ -36,4 +42,12 @@ DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
 
 ```
 DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+```
+
+## Verify Contracts
+
+```
+yarn verify --network scrollSepolia --api-url https://api-sepolia.scrollscan.com
+
+Make sure to replace etherscan key for that chain.
 ```
