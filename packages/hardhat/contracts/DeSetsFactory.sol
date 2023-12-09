@@ -27,7 +27,6 @@ contract DeSetsFactory is Ownable {
 	}
 
 	function getDataSetNFTs() external view returns (address[] memory) {
-		require(datasetsNFTs.length > 0, "no datasets NFTs deployed");
 		return datasetsNFTs;
 	}
 
