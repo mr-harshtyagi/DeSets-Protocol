@@ -16,12 +16,21 @@ const DataSetCard = ({
   creatorWallet,
 }: DataSetCardProps) => {
   return (
-    <div className="flex flex-col justify-center text-center p-4 bg-slate-700 m-4 rounded-2xl hover:-translate-y-3 transform transition-transform duration-500 ease-in-out hover:scale-105">
-      <h1>{dataSetName}</h1>
-      <p>{dataSetDescription}</p>
-      <p>{dataSetNftBuyCounter}</p>
-      <p>{dataSetNftPrice}</p>
-      <p>{creatorWallet}</p>
+    <div className="card w-96 bg-base-100 shadow-xl m-4">
+      <figure className="px-10 pt-10">
+        <img
+          src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+          alt="Shoes"
+          className="rounded-xl"
+        />
+      </figure>
+      <div className="card-body items-center text-center text-black">
+        <h2 className="card-title">{dataSetName}</h2>
+        <p>{dataSetDescription}</p>
+        <div className="card-actions">
+          <button className="btn btn-primary">Buy Now</button>
+        </div>
+      </div>
     </div>
   );
 };
