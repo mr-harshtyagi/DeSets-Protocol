@@ -3,15 +3,15 @@ import { ArrowDownTrayIcon } from "@heroicons/react/20/solid";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 
 interface DataSetCardProps {
-  dataSetName: string;
-  dataSetDescription: string;
-  price: number;
-  totalSupply: number;
-  maxMintAmount: number;
-  reputationScore: number;
-  totalUpvotes: number;
-  totalDownvotes: number;
-  buttonType: number;
+  dataSetName?: string;
+  dataSetDescription?: string;
+  price?: number;
+  totalSupply?: number;
+  maxMintAmount?: number;
+  reputationScore?: number;
+  totalUpvotes?: number;
+  totalDownvotes?: number;
+  buttonType: string;
 }
 
 const DataSetCard = ({
@@ -118,7 +118,19 @@ const DataSetCard = ({
               </span>
             </div>
           </div>
-          <button></button>
+          <div className="flex justify-center pt-3">
+            {buttonType === "owned" ? (
+              <button className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white ">
+                Download
+              </button>
+            ) : buttonType === "created" ? (
+              <></>
+            ) : (
+              <button className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white">
+                Buy
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>

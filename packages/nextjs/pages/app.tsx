@@ -19,7 +19,7 @@ const App = () => {
               createDatasetModal.showModal();
             }
           }
-          className="btn btn-active btn-primary rounded-lg mr-20 mt-8 font-semibold text-white hover:scale-105 "
+          className="btn bg-purple-700 rounded-lg mr-20 mt-8 font-semibold text-white hover:bg-purple-900"
         >
           + Create DataSet
         </button>
@@ -27,40 +27,12 @@ const App = () => {
       <CreateDataSet />
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
+        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />
+        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />
       </div>
       <Footer />
+
+      {/* Owned datasets */}
 
       <div className="flex justify-between">
         <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
@@ -68,22 +40,7 @@ const App = () => {
       <CreateDataSet />
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="Download"
-        />
+        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="owned" />
       </div>
       <Footer />
     </div>

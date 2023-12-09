@@ -14,38 +14,8 @@ const Marketplace = () => {
       </div>
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="View"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="View"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="View"
-        />
-        <DataSetCard
-          dataSetName="Test"
-          dataSetDescription="Test Description"
-          dataSetNftBuyCounter={13}
-          dataSetNftPrice={100}
-          creatorWallet="0xhhhh"
-          buttonText="View"
-        />
+        <DataSetCard dataSetName="Test 1" dataSetDescription="Test Description" buttonType="q" />
+        <DataSetCard dataSetName="Test 2" dataSetDescription="Test Description" buttonType="marketplace" />
       </div>
       <Footer />
     </div>

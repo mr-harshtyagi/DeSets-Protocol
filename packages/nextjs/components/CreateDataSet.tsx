@@ -41,7 +41,7 @@ const CreateDataSet = () => {
 
   function handleInputZipChange(event: React.ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) return;
-    const file = event.target.files[0];
+    const file = event.target.files;
     setFormData(
       prev =>
         ({
