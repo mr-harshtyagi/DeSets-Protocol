@@ -1,5 +1,5 @@
 {
-  "name": "se-2",
+  "name": "desets",
   "version": "0.0.1",
   "private": true,
   "workspaces": {
@@ -9,25 +9,25 @@
     ]
   },
   "scripts": {
-    "account": "yarn workspace @se-2/hardhat account",
-    "chain": "yarn workspace @se-2/hardhat chain",
-    "fork": "yarn workspace @se-2/hardhat fork",
-    "deploy": "yarn workspace @se-2/hardhat deploy",
-    "verify": "yarn workspace @se-2/hardhat verify",
-    "compile": "yarn workspace @se-2/hardhat compile",
-    "generate": "yarn workspace @se-2/hardhat generate",
-    "hardhat:lint": "yarn workspace @se-2/hardhat lint",
-    "hardhat:lint-staged": "yarn workspace @se-2/hardhat lint-staged",
-    "hardhat:test": "yarn workspace @se-2/hardhat test",
+    "account": "yarn workspace @desets/hardhat account",
+    "chain": "yarn workspace @desets/hardhat chain",
+    "fork": "yarn workspace @desets/hardhat fork",
+    "deploy": "yarn workspace @desets/hardhat deploy",
+    "verify": "yarn workspace @desets/hardhat verify",
+    "compile": "yarn workspace @desets/hardhat compile",
+    "generate": "yarn workspace @desets/hardhat generate",
+    "hardhat:lint": "yarn workspace @desets/hardhat lint",
+    "hardhat:lint-staged": "yarn workspace @desets/hardhat lint-staged",
+    "hardhat:test": "yarn workspace @desets/hardhat test",
     "test": "yarn hardhat:test",
-    "start": "yarn workspace @se-2/nextjs dev",
-    "next:lint": "yarn workspace @se-2/nextjs lint",
-    "next:format": "yarn workspace @se-2/nextjs format",
-    "next:check-types": "yarn workspace @se-2/nextjs check-types",
+    "start": "yarn workspace @desets/nextjs dev",
+    "next:lint": "yarn workspace @desets/nextjs lint",
+    "next:format": "yarn workspace @desets/nextjs format",
+    "next:check-types": "yarn workspace @desets/nextjs check-types",
     "postinstall": "husky install",
     "precommit": "lint-staged",
-    "vercel": "yarn workspace @se-2/nextjs vercel",
-    "vercel:yolo": "yarn workspace @se-2/nextjs vercel:yolo"
+    "vercel": "yarn workspace @desets/nextjs vercel",
+    "vercel:yolo": "yarn workspace @desets/nextjs vercel:yolo"
   },
   "packageManager": "yarn@3.2.3",
   "devDependencies": {
