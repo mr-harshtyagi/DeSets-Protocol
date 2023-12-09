@@ -31,4 +31,55 @@ contract DataSet is ERC721, Ownable {
 		dataSetURI = _dataSetURI;
 		transferOwnership(_owner);
 	}
+
+	// functions
+	function getDataSetURI() public view returns (string memory) {
+		require(balanceOf(msg.sender) > 0, "you need to own the NFT");
+		return dataSetURI;
+	}
+
+	function mint(uint256 _mintAmount) public payable {
+		uint256 supply = totalSupply;
+		require(!paused, "the contract is paused");
+		require(_mintAmount > 0, "need to mint at least 1 NFT");
+		require(
+			_mintAmount <= maxMintAmount,
+			"max mint amount per session exceeded"
+		);
+
+		require(
+			msg.value >= price * _mintAmount,
+			"ether value sent is not correct"
+		);
+
+		for (uint256 i = 1; i <= _mintAmount; i++) {
+			totalSupply++;
+			_safeMint(msg.sender, supply + i);
+			emit CreateNFT(supply + i);
+		}
+	}
+
+	function setPrice(uint256 _newPrice) external onlyOwner {
+		price = _newPrice;
+		emit ChangePrice(_newPrice);
+	}
+
+	function setMaxMintAmount(uint256 _newMaxMintAmount) external onlyOwner {
+		maxMintAmount = _newMaxMintAmount;
+		emit ChangeMaxMintAmount(_newMaxMintAmount);
+	}
+
+	function setDataSetURI(string memory _newBaseURI) external onlyOwner {
+		dataSetURI = _newBaseURI;
+		emit ChangeDataSetURI(_newBaseURI);
+	}
+
+	function pause(bool _state) external onlyOwner {
+		paused = _state;
+		emit Pause(_state);
+	}
+
+	function withdraw() external onlyOwner {
+		payable(msg.sender).transfer(address(this).balance);
+	}
 }
