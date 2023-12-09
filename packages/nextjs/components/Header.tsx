@@ -15,11 +15,11 @@ type HeaderMenuLink = {
 export const menuLinks: HeaderMenuLink[] = [
   {
     label: "My Datasets",
-    href: "/",
+    href: "/app",
   },
   {
     label: "Explore Marketplace",
-    href: "/debug",
+    href: "/marketplace",
     // icon: ,
   },
 ];
@@ -101,7 +101,7 @@ export const Header = () => {
       </div>
       <div className="navbar-end flex-grow mr-4">
         <RainbowKitCustomConnectButton />
-        <FaucetButton />
+        {/* <FaucetButton /> */}
       </div>
     </div>
   );
