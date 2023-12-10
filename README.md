@@ -26,10 +26,6 @@ This lets us create a data economy where users are incentivised for sharing valu
 
 ## EVM chains (Deployed Contracts)
 
-### FVM Calibration Testnet
-
-DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-
 ### Scroll Sepolia Testnet
 
 DeSetsFactory.sol: [Verified Contract](https://sepolia.scrollscan.com/address/0xe13b39399d77cabd00b9d964bfbb235a60720d1f)
@@ -37,11 +33,3 @@ DeSetsFactory.sol: [Verified Contract](https://sepolia.scrollscan.com/address/0x
 ### Base Goerli Testnet
 
 DeSetsFactory.sol: [Verified Contract](https://base-goerli.blockscout.com/address/0x0B7E379D119C58D8beFB5661e6615BedDAc9C811)
-
-## Verify Contracts
-
-```
-yarn verify --network scrollSepolia --api-url https://api-sepolia.scrollscan.com
-
-Make sure to replace etherscan key for that chain.
-```
