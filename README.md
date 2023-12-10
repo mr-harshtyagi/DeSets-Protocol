@@ -10,6 +10,7 @@ This lets us create a data economy where users are incentivised for sharing valu
 
 - Scaffold-eth2 Starter template
 - Hardhat & Solidity
+- EVM Chains : FVM Calibration Testnet , Scroll Sepolia , Celo Alfajores , Base Testnet
 - Wagmi & viem
 - Typescript & Next.js 13
 - Tailwind CSS & daisyUI
@@ -27,33 +28,15 @@ This lets us create a data economy where users are incentivised for sharing valu
 
 ### FVM Calibration Testnet
 
-```
 DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-```
-
-### Celo Alfajores Testnet
-
-```
-DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-```
-
-### Base Testnet
-
-```
-DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-```
 
 ### Scroll Sepolia Testnet
 
-```
-DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-```
+DeSetsFactory.sol: [Verified Contract](https://sepolia.scrollscan.com/address/0xe13b39399d77cabd00b9d964bfbb235a60720d1f)
 
-### Polygon zkEVM Testnet
+### Base Goerli Testnet
 
-```
-DeSetsFactory.sol: 0x5FbDB2315678afecb367f032d93F642f64180aa3
-```
+DeSetsFactory.sol: [Verified Contract](https://base-goerli.blockscout.com/address/0x0B7E379D119C58D8beFB5661e6615BedDAc9C811)
 
 ## Verify Contracts
 
