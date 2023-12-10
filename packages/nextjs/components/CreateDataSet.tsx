@@ -1,7 +1,11 @@
 import React from "react";
 import lighthouse from "@lighthouse-web3/sdk";
+import { useContractWrite } from "wagmi";
+import deployedContracts from "~~/contracts/deployedContracts";
+import { useGlobalState } from "~~/services/store/store";
 
 const CreateDataSet = () => {
+  const targetNetwork = useGlobalState(state => state.targetNetwork);
   const [formData, setFormData] = React.useState({
     dataSetName: "",
     dataSetDescription: "",
@@ -9,27 +13,21 @@ const CreateDataSet = () => {
     file: "",
   });
 
-  // const handleFileReader = () => {
-  //   // make a promise that resolves when the file is read
-  //   const reader = new FileReader();
-  //   reader.readAsDataURL(formData.file as any);
-  //   return new Promise((resolve, reject) => {
-  //     reader.onload = e => {
-  //       resolve(e.target?.result || null);
-  //     };
-  //     reader.onerror = reject;
-  //   });
+  function getDeSetsFactoryContract(chainId: any) {
+    return deployedContracts[chainId as keyof typeof deployedContracts].DeSetsFactory;
+  }
 
-  //   // reader.onload = e => {
-  //   //   setFormData(
-  //   //     prev =>
-  //   //       ({
-  //   //         ...prev,
-  //   //         file: e.target?.result || null,
-  //   //       } as any),
-  //   //   );
-  //   // };
-  // };
+  const {
+    data,
+    isLoading,
+    isSuccess,
+    write: deployDataSetNFT,
+  } = useContractWrite({
+    address: getDeSetsFactoryContract(targetNetwork.id).address,
+    //@ts-ignore
+    abi: getDeSetsFactoryContract(targetNetwork.id).abi,
+    functionName: "deployDataSetNFT",
+  });
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
@@ -66,6 +64,10 @@ const CreateDataSet = () => {
     console.log(uploadResponse);
     console.log("Visit at https://gateway.lighthouse.storage/ipfs/" + uploadResponse.data.Hash);
 
+    deployDataSetNFT({
+      args: [formData.dataSetName, formData.dataSetDescription, BigInt(formData.price), uploadResponse.data.Hash],
+    });
+
     setFormData({
       dataSetName: "",
       dataSetDescription: "",
@@ -84,64 +86,68 @@ const CreateDataSet = () => {
           </form>
           <h3 className="font-bold text-lg">Create a Dataset</h3>
           {/* <p className="py-4">Press ESC key or click on ✕ button to close</p> */}
-          <form onSubmit={handleSubmit}>
-            <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">DataSet Name</span>
-              </div>
-              <input
-                value={formData.dataSetName}
-                onChange={handleChange}
-                name="dataSetName"
-                type="text"
-                placeholder="Type Dataset name"
-                className="input input-bordered w-full"
-                required
-              />
-            </label>
-            <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">DataSet Description</span>
-              </div>
-              <input
-                type="text"
-                value={formData.dataSetDescription}
-                onChange={handleChange}
-                name="dataSetDescription"
-                placeholder="Type Dataset description"
-                className="input input-bordered w-full"
-                required
-              />
-            </label>
-            <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">Price (in ETH)</span>
-              </div>
-              <input
-                value={formData.price}
-                onChange={handleChange}
-                name="price"
-                type="number"
-                placeholder="Enter Price"
-                className="input input-bordered w-full"
-                required
-              />
-            </label>
-            <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">Choose DataSet zip to Upload</span>
-              </div>
-              <input
-                name="file"
-                onChange={handleInputZipChange}
-                type="file"
-                accept=".zip"
-                className="file-input file-input-bordered w-full"
-                required
-              />
-            </label>
-            <button className="btn w-full bg-slate-200 mt-4 hover:bg-slate-300">Create dataset</button>
-          </form>
+          {isLoading ? (
+            <p className="py-4">Creating Dataset...</p>
+          ) : (
+            <form onSubmit={handleSubmit}>
+              <label className="form-control w-full ">
+                <div className="label">
+                  <span className="label-text">DataSet Name</span>
+                </div>
+                <input
+                  value={formData.dataSetName}
+                  onChange={handleChange}
+                  name="dataSetName"
+                  type="text"
+                  placeholder="Type Dataset name"
+                  className="input input-bordered w-full"
+                  required
+                />
+              </label>
+              <label className="form-control w-full ">
+                <div className="label">
+                  <span className="label-text">DataSet Description</span>
+                </div>
+                <input
+                  type="text"
+                  value={formData.dataSetDescription}
+                  onChange={handleChange}
+                  name="dataSetDescription"
+                  placeholder="Type Dataset description"
+                  className="input input-bordered w-full"
+                  required
+                />
+              </label>
+              <label className="form-control w-full ">
+                <div className="label">
+                  <span className="label-text">Price (in ETH)</span>
+                </div>
+                <input
+                  value={formData.price}
+                  onChange={handleChange}
+                  name="price"
+                  type="number"
+                  placeholder="Enter Price"
+                  className="input input-bordered w-full"
+                  required
+                />
+              </label>
+              <label className="form-control w-full ">
+                <div className="label">
+                  <span className="label-text">Choose DataSet zip to Upload</span>
+                </div>
+                <input
+                  name="file"
+                  onChange={handleInputZipChange}
+                  type="file"
+                  accept=".zip"
+                  className="file-input file-input-bordered w-full"
+                  required
+                />
+              </label>
+              <button className="btn w-full bg-slate-200 mt-4 hover:bg-slate-300">Create dataset</button>
+            </form>
+          )}
         </div>
       </dialog>
     </div>

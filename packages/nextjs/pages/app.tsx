@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useContractRead } from "wagmi";
+import { useAccount } from "wagmi";
 import CreateDataSet from "~~/components/CreateDataSet";
 import DataSetCard from "~~/components/DataSetCard";
 import { Footer } from "~~/components/Footer";
@@ -11,6 +12,7 @@ import { useGlobalState } from "~~/services/store/store";
 
 const App = () => {
   const [loading, setLoading] = React.useState(false);
+  const { address } = useAccount();
 
   const [ownedDataSets, setOwnedDataSets] = React.useState([]);
   const [createdDataSets, setCreatedDataSets] = React.useState([]);
@@ -28,7 +30,7 @@ const App = () => {
       <Header />
       {/* My DataSets Heading */}
       <div className="flex justify-between">
-        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Created DataSets</h2>
+        <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
         <button
           onClick={() =>
             //@ts-nocheck
@@ -52,7 +54,7 @@ const App = () => {
               dataSetName="Test 1"
               dataSetDescription="Test Description"
               dataSetAddress={dataSetAddress}
-              buttonType="q"
+              buttonType="owned"
             />
           ))}
       </div>
@@ -60,7 +62,7 @@ const App = () => {
 
       {/* Owned datasets */}
 
-      <div className="flex justify-between">
+      {/* <div className="flex justify-between">
         <h2 className="text-4xl text-white font-bold ml-10 mt-8">Owned DataSets</h2>
       </div>
       <CreateDataSet />
@@ -76,7 +78,7 @@ const App = () => {
               buttonType="q"
             />
           ))}
-      </div>
+      </div> */}
       <Footer />
     </div>
   );

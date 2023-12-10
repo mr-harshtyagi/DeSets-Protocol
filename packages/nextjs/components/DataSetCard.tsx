@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useContractRead } from "wagmi";
+import { useContractWrite } from "wagmi";
 import { ArrowDownTrayIcon } from "@heroicons/react/20/solid";
 import { ClipboardDocumentIcon } from "@heroicons/react/24/outline";
 import dataSetAbi from "~~/contracts/dataSetAbi";
@@ -41,6 +42,54 @@ const DataSetCard = ({
     owner: "",
   } as any);
 
+  const {
+    data: upvotedata,
+    isLoading: upvoteLoading,
+    isSuccess: upvoteSuccess,
+    write: upvote,
+  } = useContractWrite({
+    address: dataSetAddress,
+    //@ts-ignore
+    abi: dataSetAbi,
+    functionName: "upvoteDataSet",
+  });
+
+  const {
+    data: downvotedata,
+    isLoading: downvoteLoading,
+    isSuccess: downvoteSuccess,
+    write: downvote,
+  } = useContractWrite({
+    address: dataSetAddress,
+    //@ts-ignore
+    abi: dataSetAbi,
+    functionName: "downvoteDataSet",
+  });
+
+  const {
+    data: mintdata,
+    isLoading: mintLoading,
+    isSuccess: mintSuccess,
+    write: mint,
+  } = useContractWrite({
+    address: dataSetAddress,
+    //@ts-ignore
+    abi: dataSetAbi,
+    functionName: "mint",
+  });
+
+  const {
+    data: getDataSetURIdata,
+    isLoading: getDataSetURILoading,
+    isSuccess: getDataSetURISuccess,
+    write: getDataSetURI,
+  } = useContractWrite({
+    address: dataSetAddress,
+    //@ts-ignore
+    abi: dataSetAbi,
+    functionName: "getDataSetURI",
+  });
+
   const { data, isError, isLoading } = useContractRead({
     address: dataSetAddress,
     abi: dataSetAbi,
@@ -62,7 +111,7 @@ const DataSetCard = ({
     }
   }, [data]);
 
-  console.log("dataSetData state", dataSetData);
+  console.log("dataset NFT data", data);
   const reputationScoreValue: number = Math.abs(
     (Number(dataSetData.totalUpvotes) - Number(dataSetData.totalDownvotes) / Number(dataSetData.totalSupply)) * 100,
   );
@@ -114,10 +163,7 @@ const DataSetCard = ({
           </div>
           <div className="flex justify-between items-center pt-4">
             <div className="flex gap-2">
-              <button
-                className="btn btn-sm bg-green-200 hover:bg-green-400 "
-                onClick={() => console.log("Upvote button clicked")}
-              >
+              <button className="btn btn-sm bg-green-200 hover:bg-green-400 " onClick={() => upvote({ args: [] })}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -130,10 +176,7 @@ const DataSetCard = ({
                 </svg>
                 <p>{dataSetData.totalUpvotes}</p>
               </button>
-              <button
-                className="btn btn-sm bg-red-200 hover:bg-red-400"
-                onClick={() => console.log("Downvote button clicked")}
-              >
+              <button className="btn btn-sm bg-red-200 hover:bg-red-400" onClick={() => downvote({ args: [] })}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -157,13 +200,19 @@ const DataSetCard = ({
           </div>
           <div className="flex justify-center pt-3">
             {buttonType === "owned" ? (
-              <button className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white ">
+              <button
+                onClick={() => getDataSetURI({ args: [] })}
+                className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white "
+              >
                 Download
               </button>
             ) : buttonType === "created" ? (
               <></>
             ) : (
-              <button className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white">
+              <button
+                onClick={() => mint({ args: [1], value: dataSetData.price })}
+                className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white"
+              >
                 Buy
               </button>
             )}
