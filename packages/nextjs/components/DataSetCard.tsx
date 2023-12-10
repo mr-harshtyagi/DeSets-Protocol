@@ -82,8 +82,7 @@ const DataSetCard = ({
     data: getDataSetURIdata,
     isLoading: getDataSetURILoading,
     isSuccess: getDataSetURISuccess,
-    write: getDataSetURI,
-  } = useContractWrite({
+  } = useContractRead({
     address: dataSetAddress,
     //@ts-ignore
     abi: dataSetAbi,
@@ -201,7 +200,7 @@ const DataSetCard = ({
           <div className="flex justify-center pt-3">
             {buttonType === "owned" ? (
               <button
-                onClick={() => getDataSetURI({ args: [] })}
+                onClick={() => console.log(getDataSetURIdata)}
                 className="btn btn-sm w-full rounded-full bg-purple-700 hover:bg-purple-900 text-white "
               >
                 Download

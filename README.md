@@ -33,3 +33,7 @@ DeSetsFactory.sol: [Verified Contract](https://sepolia.scrollscan.com/address/0x
 ### Base Goerli Testnet
 
 DeSetsFactory.sol: [Verified Contract](https://base-goerli.blockscout.com/address/0x0B7E379D119C58D8beFB5661e6615BedDAc9C811)
+
+### FVM Calibration Testnet
+
+DeSetsFactory.sol: 0x0B7E379D119C58D8beFB5661e6615BedDAc9C811

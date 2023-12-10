@@ -115,7 +115,7 @@ const config: HardhatUserConfig = {
       accounts: [deployerPrivateKey],
     },
     filecoinCalibration: {
-      url: "https://filecoin-calibration.chainup.net/rpc/v1",
+      url: "https://api.calibration.node.glif.io/rpc/v1",
       accounts: [deployerPrivateKey],
     },
     scrollSepolia: {
