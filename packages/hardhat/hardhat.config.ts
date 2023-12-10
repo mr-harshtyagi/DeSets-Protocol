@@ -137,7 +137,7 @@ const config: HardhatUserConfig = {
   },
   verify: {
     etherscan: {
-      apiKey: "PLACEHOLDER_STRING",
+      apiKey: etherscanApiKey,
     },
   },
 };

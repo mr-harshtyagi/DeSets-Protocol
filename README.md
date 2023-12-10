@@ -10,7 +10,7 @@ This lets us create a data economy where users are incentivised for sharing valu
 
 - Scaffold-eth2 Starter template
 - Hardhat & Solidity
-- EVM Chains : FVM Calibration Testnet , Scroll Sepolia , Celo Alfajores , Base Testnet
+- EVM Chains : FVM Calibration Testnet , Scroll Sepolia, Base Testnet
 - Wagmi & viem
 - Typescript & Next.js 13
 - Tailwind CSS & daisyUI
