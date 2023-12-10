@@ -11,43 +11,17 @@ import { useGlobalState } from "~~/services/store/store";
 
 const App = () => {
   const [loading, setLoading] = React.useState(false);
-  const targetNetwork = useGlobalState(state => state.targetNetwork);
+
+  const [ownedDataSets, setOwnedDataSets] = React.useState([]);
+  const [createdDataSets, setCreatedDataSets] = React.useState([]);
+  // const targetNetwork = useGlobalState(state => state.targetNetwork);
   // const setDataSets = useGlobalState(state => state.setDataSets);
   const dataSets = useGlobalState(state => state.dataSets);
 
-  // function getDeSetsFactoryContract(chainId: any) {
-  //   return deployedContracts[chainId as keyof typeof deployedContracts].DeSetsFactory;
-  // }
-
-  // const data = useScaffoldContractRead({ contractName: "DeSetsFactory", functionName: "getDataSetNFTs" });
-
-  // if (dataSets) {
-  //   console.log("data", dataSets);
-  //   dataSets.map((dataSet: any) => {
-  //     console.log("dataSet", dataSet);
-  //     const { data, isError, isLoading } = useContractRead({
-  //       address: dataSet,
-  //       abi: dataSetAbi,
-  //       functionName: "getDataSetInfo",
-  //     });
-  //   });
-  // }
-
-  // useEffect(() => {
-  //   const getDatasets = async () => {
-  //     setLoading(true);
-  //     console.log("targetNetwork", targetNetwork.name, targetNetwork.id);
-  //     const result = getDeSetsFactoryContract(targetNetwork.id);
-  //     console.log("DeSetsFactory Contract", result);
-
-  //     setDataSets(data.data);
-
-  //     // console.log(data, isError, isLoading);
-
-  //     setLoading(false);
-  //   };
-  //   getDatasets();
-  // }, [data]);
+  useEffect(() => {
+    setOwnedDataSets(dataSets);
+    setCreatedDataSets(dataSets);
+  }, [dataSets]);
 
   return (
     <div>
@@ -71,10 +45,16 @@ const App = () => {
       <CreateDataSet />
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        {dataSets &&
-          dataSets.map((dataSet: any) => {
-            <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />;
-          })}
+        {createdDataSets &&
+          createdDataSets.map(dataSetAddress => (
+            <DataSetCard
+              key={1}
+              dataSetName="Test 1"
+              dataSetDescription="Test Description"
+              dataSetAddress={dataSetAddress}
+              buttonType="q"
+            />
+          ))}
       </div>
       <Footer />
 
@@ -86,7 +66,16 @@ const App = () => {
       <CreateDataSet />
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="owned" />
+        {ownedDataSets &&
+          ownedDataSets.map(dataSetAddress => (
+            <DataSetCard
+              key={1}
+              dataSetName="Test 1"
+              dataSetDescription="Test Description"
+              dataSetAddress={dataSetAddress}
+              buttonType="q"
+            />
+          ))}
       </div>
       <Footer />
     </div>

@@ -27,8 +27,14 @@ const Marketplace = () => {
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
         {data &&
-          data.map(() => (
-            <DataSetCard key={1} dataSetName="Test 1" dataSetDescription="Test Description" buttonType="q" />
+          data.map(dataSetAddress => (
+            <DataSetCard
+              key={1}
+              dataSetName="Test 1"
+              dataSetDescription="Test Description"
+              dataSetAddress={dataSetAddress}
+              buttonType="q"
+            />
           ))}
       </div>
       <Footer />

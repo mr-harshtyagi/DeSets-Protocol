@@ -19,7 +19,6 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
   const setNativeCurrencyPrice = useGlobalState(state => state.setNativeCurrencyPrice);
   const setDataSets = useGlobalState(state => state.setDataSets);
   const targetNetwork = useGlobalState(state => state.targetNetwork);
-  const dataSets = useGlobalState(state => state.dataSets);
 
   const data = useScaffoldContractRead({ contractName: "DeSetsFactory", functionName: "getDataSetNFTs" });
 
@@ -34,8 +33,6 @@ const ScaffoldEthApp = ({ Component, pageProps }: AppProps) => {
       console.log("DeSetsFactory Contract", result);
 
       setDataSets(data.data);
-
-      // console.log(data, isError, isLoading);
     };
     getDatasets();
   }, [data]);
