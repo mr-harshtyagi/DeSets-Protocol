@@ -1,10 +1,54 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useContractRead } from "wagmi";
 import CreateDataSet from "~~/components/CreateDataSet";
 import DataSetCard from "~~/components/DataSetCard";
 import { Footer } from "~~/components/Footer";
 import { Header } from "~~/components/Header";
+import dataSetAbi from "~~/contracts/dataSetAbi";
+import deployedContracts from "~~/contracts/deployedContracts";
+import { useScaffoldContractRead } from "~~/hooks/scaffold-eth";
+import { useGlobalState } from "~~/services/store/store";
 
 const App = () => {
+  const [loading, setLoading] = React.useState(false);
+  const targetNetwork = useGlobalState(state => state.targetNetwork);
+  // const setDataSets = useGlobalState(state => state.setDataSets);
+  const dataSets = useGlobalState(state => state.dataSets);
+
+  // function getDeSetsFactoryContract(chainId: any) {
+  //   return deployedContracts[chainId as keyof typeof deployedContracts].DeSetsFactory;
+  // }
+
+  // const data = useScaffoldContractRead({ contractName: "DeSetsFactory", functionName: "getDataSetNFTs" });
+
+  // if (dataSets) {
+  //   console.log("data", dataSets);
+  //   dataSets.map((dataSet: any) => {
+  //     console.log("dataSet", dataSet);
+  //     const { data, isError, isLoading } = useContractRead({
+  //       address: dataSet,
+  //       abi: dataSetAbi,
+  //       functionName: "getDataSetInfo",
+  //     });
+  //   });
+  // }
+
+  // useEffect(() => {
+  //   const getDatasets = async () => {
+  //     setLoading(true);
+  //     console.log("targetNetwork", targetNetwork.name, targetNetwork.id);
+  //     const result = getDeSetsFactoryContract(targetNetwork.id);
+  //     console.log("DeSetsFactory Contract", result);
+
+  //     setDataSets(data.data);
+
+  //     // console.log(data, isError, isLoading);
+
+  //     setLoading(false);
+  //   };
+  //   getDatasets();
+  // }, [data]);
+
   return (
     <div>
       <Header />
@@ -27,8 +71,10 @@ const App = () => {
       <CreateDataSet />
 
       <div className=" text-white p-10 grid grid-cols-3 w-full">
-        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />
-        <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />
+        {dataSets &&
+          dataSets.map((dataSet: any) => {
+            <DataSetCard dataSetName="Test" dataSetDescription="Test Description" buttonType="created" />;
+          })}
       </div>
       <Footer />
 
